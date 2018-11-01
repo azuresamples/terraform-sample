@@ -18,6 +18,16 @@ resource "alicloud_security_group_rule" "allow_http" {
   security_group_id = "${alicloud_security_group.group.id}"
   cidr_ip           = "0.0.0.0/0"
 }
+resource "alicloud_security_group_rule" "allow_ssh" {
+  type              = "ingress"
+  ip_protocol       = "tcp"
+  nic_type          = "intranet"
+  policy            = "accept"
+  port_range        = "22/22"
+  priority          = 1
+  security_group_id = "${alicloud_security_group.group.id}"
+  cidr_ip           = "218.40.0.0/16"
+}
 # VPCの作成
 resource "alicloud_vpc" "vpc" {
   name = "terraform-vpc"
