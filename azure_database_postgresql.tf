@@ -50,10 +50,17 @@ resource "azurerm_postgresql_database" "test" {
   collation           = "C"
 }
 
-resource "azurerm_postgresql_firewall_rule" "test" {
-  name                = "AllowJumpbox"
-  resource_group_name = "${azurerm_resource_group.test.name}"
-  server_name         = "${azurerm_postgresql_server.test.name}"
-  start_ip_address    = "10.0.17.62"
-  end_ip_address      = "10.0.17.62"
+#resource "azurerm_postgresql_firewall_rule" "test" {
+#  name                = "AllowJumpbox"
+#  resource_group_name = "${azurerm_resource_group.test.name}"
+#  server_name         = "${azurerm_postgresql_server.test.name}"
+#  start_ip_address    = "10.0.17.62"
+#  end_ip_address      = "10.0.17.62"
+#}
+
+resource "azurerm_sql_virtual_network_rule" "test" {
+    name                = "EndpointRule"
+    resource_group_name = "${azurerm_resource_group.test.name}"
+    server_name         = "${azurerm_postgresql_server.test.name}"
+    subnet_id           = "${data.azurerm_subscription.subscription.id}/resourceGroups/${azurerm_resource_group.test.name}/providers/Microsoft.Network/virtualNetworks/${data.vnet_name}/subnets/${data.subnet_name}"
 }
