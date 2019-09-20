@@ -29,12 +29,16 @@ resource "azurerm_postgresql_server" "test" {
     family = "Gen5"
   }
 
+  staorage_profile {
+    storage_mb = "5120"
+    backup_retention_days = 7
+    geo_redundant_backup = "Disabled"
+    auto_grow             = "Enabled"
+    }
+  
   administrator_login = "pgsqladminun"
   administrator_login_password = "H@Sh1CoR3!"
   version = "10"
-  storage_mb = "5120"
-  backup_retention_days = 7
-  geo_redundant_backup = "Disabled"
   ssl_enforcement = "Enabled"
 }
 
