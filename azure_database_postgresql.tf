@@ -13,12 +13,12 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "test" {
-  name     = "tf_test_01_rg"
-  location = "Japan West"
+  name     = "suga-rsg"
+  location = "Japan East"
 }
 
 resource "azurerm_postgresql_server" "test" {
-  name                = "postgresql-keisen-1"
+  name                = "suga-postgresql10-test"
   location            = "${azurerm_resource_group.test.location}"
   resource_group_name = "${azurerm_resource_group.test.name}"
 
@@ -28,7 +28,7 @@ resource "azurerm_postgresql_server" "test" {
     tier = "Basic"
   }
 
-  administrator_login = "psqladminun"
+  administrator_login = "pgsqladminun"
   administrator_login_password = "H@Sh1CoR3!"
   version = "10"
   storage_mb = "51200"
