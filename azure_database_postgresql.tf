@@ -50,17 +50,17 @@ resource "azurerm_postgresql_database" "test" {
   collation           = "C"
 }
 
-#resource "azurerm_postgresql_firewall_rule" "test" {
-#  name                = "AllowJumpbox"
-#  resource_group_name = "${azurerm_resource_group.test.name}"
-#  server_name         = "${azurerm_postgresql_server.test.name}"
-#  start_ip_address    = "10.0.17.62"
-#  end_ip_address      = "10.0.17.62"
-#}
-
-resource "azurerm_sql_virtual_network_rule" "test" {
-    name                = "EndpointRule"
-    resource_group_name = "${azurerm_resource_group.test.name}"
-    server_name         = "${azurerm_postgresql_server.test.name}"
-    subnet_id           = "/subscriptions/6d5f4926-9bf3-444c-97d9-a8625ebdc56e/resourceGroups/suga-rsg/providers/Microsoft.Network/virtualNetworks/suga-vnet/subnets/suga-subnet6"
+resource "azurerm_postgresql_firewall_rule" "test" {
+  name                = "AllowJumpbox"
+  resource_group_name = "${azurerm_resource_group.test.name}"
+  server_name         = "${azurerm_postgresql_server.test.name}"
+  start_ip_address    = "104.41.184.252"
+  end_ip_address      = "104.41.184.252"
 }
+
+#resource "azurerm_sql_virtual_network_rule" "test" {
+#    name                = "EndpointRule"
+#    resource_group_name = "${azurerm_resource_group.test.name}"
+#    server_name         = "${azurerm_postgresql_server.test.name}"
+#    subnet_id           = "/subscriptions/6d5f4926-9bf3-444c-97d9-a8625ebdc56e/resourceGroups/suga-rsg/providers/Microsoft.Network/virtualNetworks/suga-vnet/subnets/suga-subnet6"
+#}
