@@ -4,6 +4,8 @@ variable "subscription_id" {}
 variable "client_id" {}
 variable "client_secret" {}
 variable "tenant_id" {}
+variable "start_ip_address" {}
+variable ""
 
 provider "azurerm" {
   subscription_id = "${var.subscription_id}"
