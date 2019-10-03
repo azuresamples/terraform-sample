@@ -1,5 +1,5 @@
-variable "default_user" {}
-variable "default_password" {}
+variable "admin_user" {}
+variable "admin_password" {}
 variable "subscription_id" {}
 variable "client_id" {}
 variable "client_secret" {}
@@ -38,8 +38,8 @@ resource "azurerm_postgresql_server" "test" {
     auto_grow             = "Enabled"
     }
   
-  administrator_login = "pgsqladminun"
-  administrator_login_password = "H@Sh1CoR3!"
+  administrator_login = "${var.admin_user}"
+  administrator_login_password = "${var.admin_password}"
   version = "10"
   ssl_enforcement = "Enabled"
 }
