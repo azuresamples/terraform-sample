@@ -33,7 +33,7 @@ resource "azurerm_postgresql_server" "test" {
 
   storage_profile {
     storage_mb = "5120"
-    backup_retention_days = 14
+    backup_retention_days = 7
     geo_redundant_backup = "Disabled"
     auto_grow             = "Enabled"
     }
